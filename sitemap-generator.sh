@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 red=`tput setaf 1`
 green=`tput setaf 2`
@@ -84,7 +84,7 @@ echo '      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9' >> 
 echo '            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' >> $OUTPUT
 
 # Loop over lines in the sed log file for parsing - https://unix.stackexchange.com/a/7012/67790
-IFS=$'\r\n'     # make newlines the only separator
+IFS=$'\n'     # make newlines the only separator
 set -f          # disable globbing
 for i in $($CAT < "$SED_LOG_FILE"); do
     BASENAME=$(echo "$i" | $AWK -F[/:] '{print $4}')
